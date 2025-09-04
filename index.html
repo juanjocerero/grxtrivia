@@ -7,13 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-gray-100 text-gray-900 font-sans">
 
     <!-- Modal para reanudar partida -->
     <div id="resume-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
-            <h2 class="text-xl font-bold mb-4">Partida Guardada</h2>
-            <p class="mb-6">Hemos encontrado una partida a medias. ¿Deseas continuar?</p>
+        <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
+            <h2 class="text-xl font-bold mb-4 text-gray-900">Partida Guardada</h2>
+            <p class="mb-6 text-gray-700">Hemos encontrado una partida a medias. ¿Deseas continuar?</p>
             <div class="flex justify-center gap-4">
                 <button id="resume-yes-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                     Continuar
@@ -37,12 +37,12 @@
 
         <!-- Pantalla de Juego (oculta por defecto) -->
         <div id="game-screen" class="hidden flex flex-col h-full">
-            <div class="fixed top-0 left-0 w-full p-4 bg-gray-900 z-10 flex justify-between items-center">
+            <div class="fixed top-0 left-0 w-full p-4 bg-gray-100 z-10 flex justify-between items-center">
                 <div>
-                    <h2 class="text-xl font-bold">Puntuación: <span id="score">0</span></h2>
+                    <h2 class="text-xl font-bold text-gray-900">Puntuación: <span id="score">0</span></h2>
                 </div>
                 <div>
-                    <h2 class="text-xl font-bold">Tarjeta <span id="card-counter">1/10</span></h2>
+                    <h2 class="text-xl font-bold text-gray-900">Tarjeta <span id="card-counter">1/10</span></h2>
                 </div>
             </div>
 
@@ -53,8 +53,8 @@
 
             <!-- Separador -->
             <div id="timeline-separator" class="flex-shrink-0 w-full max-w-md mx-auto my-4">
-                <div class="w-full h-px bg-gray-600"></div>
-                <span class="text-gray-400 text-sm bg-gray-900 px-2 -mt-3 block w-fit mx-auto">Línea de Tiempo</span>
+                <div class="w-full h-px bg-gray-300"></div>
+                <span class="text-gray-700 text-sm bg-gray-100 px-2 -mt-3 block w-fit mx-auto">Línea de Tiempo</span>
             </div>
 
             <!-- Wrapper para centrar el timeline -->

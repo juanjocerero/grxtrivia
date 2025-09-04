@@ -231,6 +231,7 @@ function handleCardDrop(evt) {
   
   const overlay = document.createElement('div');
   overlay.className = 'confirm-overlay';
+  overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
   
   const confirmButton = document.createElement('button');
   confirmButton.textContent = 'Confirmar';
@@ -333,7 +334,7 @@ function renderCard(event, isDraggable) {
   const card = document.createElement('div');
   card.dataset.id = event.id;
   card.dataset.year = event.year;
-  card.className = 'card bg-gray-800 p-4 rounded-lg shadow-lg w-full max-w-md mx-auto relative';
+  card.className = 'card bg-white p-4 rounded-lg shadow-lg w-full max-w-md mx-auto relative';
   card.classList.toggle('cursor-move', isDraggable);
   
   let imageHTML = '';
@@ -343,10 +344,10 @@ function renderCard(event, isDraggable) {
   
   card.innerHTML = `
         <div class="card-content">
-            <h3 class="font-bold text-lg">${event.title}</h3>
-            <p class="text-gray-400 text-sm">${event.description}</p>
+            <h3 class="font-bold text-lg text-gray-900">${event.title}</h3>
+            <p class="text-gray-700 text-sm">${event.description}</p>
             ${imageHTML}
-            <div class="year-badge hidden absolute top-2 right-2 bg-gray-600 text-xs font-bold px-2 py-1 rounded">${event.isApproximate ? 'Circa' : ''} ${event.year}</div>
+            <div class="year-badge hidden absolute top-2 right-2 bg-gray-200 text-xs font-bold px-2 py-1 rounded text-gray-800">${event.isApproximate ? 'Circa' : ''} ${event.year}</div>
         </div>
     `;
   return card;
