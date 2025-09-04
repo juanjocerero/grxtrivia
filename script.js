@@ -16,6 +16,12 @@ const wrongAnswersEl = document.getElementById('wrong-answers');
 const resumeModal = document.getElementById('resume-modal');
 const resumeYesButton = document.getElementById('resume-yes-button');
 const resumeNoButton = document.getElementById('resume-no-button');
+const resultsModal = document.getElementById('results-modal');
+const finalScoreModalEl = document.getElementById('final-score-modal');
+const correctAnswersModalEl = document.getElementById('correct-answers-modal');
+const wrongAnswersModalEl = document.getElementById('wrong-answers-modal');
+const closeResultsModalButton = document.getElementById('close-results-modal');
+const playAgainButton = document.getElementById('play-again-button');
 
 const STORAGE_KEY = 'triviaGameState';
 
@@ -180,12 +186,35 @@ function startGame() {
 */
 function endGame() {
   clearGameState();
-  finalScoreEl.textContent = score;
-  correctAnswersEl.textContent = correctAnswers;
-  wrongAnswersEl.textContent = wrongAnswers;
+  finalScoreModalEl.textContent = score;
+  correctAnswersModalEl.textContent = correctAnswers;
+  wrongAnswersModalEl.textContent = wrongAnswers;
   
+  resultsModal.classList.remove('hidden');
   gameScreen.classList.add('hidden');
-  endScreen.classList.remove('hidden');
+  
+  // Expandir todas las tarjetas para que se pueda leer el texto completo
+  timeline.classList.remove('dense-view', 'very-dense-view');
+  Array.from(timeline.children).forEach(card => {
+    const cardContent = card.querySelector('.card-content');
+    if (cardContent) {
+      cardContent.classList.remove('card-blur');
+      cardContent.querySelector('p').style.display = 'block'; // Mostrar descripción
+      const img = cardContent.querySelector('img');
+      if (img) img.style.display = 'block'; // Mostrar imagen
+    }
+  });
+
+  closeResultsModalButton.onclick = () => {
+    resultsModal.classList.add('hidden');
+    // Optionally, go back to start screen or keep game screen visible
+    startScreen.classList.remove('hidden');
+  };
+
+  playAgainButton.onclick = () => {
+    resultsModal.classList.add('hidden');
+    startGame();
+  };
 }
 
 // =================================================================================

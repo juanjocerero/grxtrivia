@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Línea de Tiempo de Granada</title>
+    <title>Historia de Granada</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,26 +12,39 @@
     <!-- Modal para reanudar partida -->
     <div id="resume-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
-            <h2 class="text-xl font-bold mb-4 text-gray-900">Partida Guardada</h2>
-            <p class="mb-6 text-gray-700">Hemos encontrado una partida a medias. ¿Deseas continuar?</p>
+            <h2 class="text-xl font-bold mb-4 text-gray-900">Partida guardada</h2>
+            <p class="mb-6 text-gray-700">Hemos encontrado una partida a medias. ¿Quieres continuarla?</p>
             <div class="flex justify-center gap-4">
                 <button id="resume-yes-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                     Continuar
                 </button>
                 <button id="resume-no-button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                    Empezar de Nuevo
+                    Empezar una nueva
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal para resultados finales -->
+    <div id="results-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-6 max-w-md mx-auto text-center relative">
+            <button id="close-results-modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+            <h2 class="text-2xl font-bold mb-4 text-gray-900">¡Partida Finalizada!</h2>
+            <p class="text-xl mb-2 text-gray-900">Puntuación final: <span id="final-score-modal">0</span> puntos</p>
+            <p class="text-lg mb-6 text-gray-700">Acertaste <span id="correct-answers-modal">0</span> y fallaste <span id="wrong-answers-modal">0</span>.</p>
+            <button id="play-again-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Jugar de nuevo
+            </button>
         </div>
     </div>
 
     <main class="container mx-auto p-4 h-screen">
         <!-- Pantalla de Inicio -->
         <div id="start-screen" class="text-center flex flex-col items-center justify-center min-h-full">
-            <h1 class="text-4xl font-bold mb-4">Línea de Tiempo de Granada</h1>
+            <h1 class="text-4xl font-bold mb-4">¿Cuánto sabes sobre la historia de Granada?</h1>
             <p class="mb-6">Ordena los eventos históricos en el orden cronológico correcto. ¡Arrastra y suelta las tarjetas para poner a prueba tu conocimiento!</p>
             <button id="start-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Iniciar Partida
+                Nueva partida
             </button>
         </div>
 
@@ -42,19 +55,19 @@
                     <h2 class="text-xl font-bold text-gray-900">Puntuación: <span id="score">0</span></h2>
                 </div>
                 <div>
-                    <h2 class="text-xl font-bold text-gray-900">Tarjeta <span id="card-counter">1/10</span></h2>
+                    <h2 class="text-xl font-bold text-gray-900">Acontecimiento <span id="card-counter">1/10</span></h2>
                 </div>
             </div>
 
             <!-- Área de la siguiente tarjeta a colocar -->
-            <div id="next-card-container" class="flex-shrink-0 flex justify-center items-center my-4 h-40 pt-20">
+            <div id="next-card-container" class="flex-shrink-0 flex justify-center items-center my-4 h-40 pt-4">
                 <!-- La tarjeta a arrastrar se insertará aquí -->
             </div>
 
             <!-- Separador -->
-            <div id="timeline-separator" class="flex-shrink-0 w-full max-w-md mx-auto my-4">
+            <div id="timeline-separator" class="flex-shrink-0 w-full max-w-md mx-auto">
                 <div class="w-full h-px bg-gray-300"></div>
-                <span class="text-gray-700 text-sm bg-gray-100 px-2 -mt-3 block w-fit mx-auto">Línea de Tiempo</span>
+                <span class="text-gray-700 text-sm bg-gray-100 px-2 -mt-3 block w-fit mx-auto">Tablero de juego</span>
             </div>
 
             <!-- Wrapper para centrar el timeline -->
@@ -67,11 +80,11 @@
 
         <!-- Pantalla Final (oculta por defecto) -->
         <div id="end-screen" class="hidden text-center flex flex-col items-center justify-center min-h-full">
-            <h1 class="text-4xl font-bold mb-4">¡Partida Finalizada!</h1>
-            <p class="text-2xl mb-2">Puntuación Final: <span id="final-score">0</span></p>
+            <h1 class="text-4xl font-bold mb-4">¡Se acabó!</h1>
+            <p class="text-2xl mb-2">Puntuación final: <span id="final-score">0</span> puntos</p>
             <p class="text-xl mb-6">Acertaste <span id="correct-answers">0</span> y fallaste <span id="wrong-answers">0</span>.</p>
             <button id="restart-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Jugar de Nuevo
+                Jugar de nuevo
             </button>
         </div>
     </main>
