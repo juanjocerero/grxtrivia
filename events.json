@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "year": -650,
+    "isApproximate": true,
+    "title": "Asentamiento íbero",
+    "description": "Primeros asentamientos de pueblos íberos en la zona que hoy conocemos como Granada.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 2,
+    "year": 711,
+    "isApproximate": false,
+    "title": "Llegada de los musulmanes",
+    "description": "Tropas de Tariq ibn Ziyad llegan a la península, iniciando el período de Al-Andalus.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 3,
+    "year": 1013,
+    "isApproximate": false,
+    "title": "Fundación de la Taifa de Granada",
+    "description": "La dinastía zirí establece un reino independiente (taifa) con capital en Granada.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 4,
+    "year": 1238,
+    "isApproximate": false,
+    "title": "Fundación del Reino Nazarí",
+    "description": "Muhammad I (Al-Ahmar) funda la dinastía nazarí y comienza la construcción de la Alhambra.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 5,
+    "year": 1349,
+    "isApproximate": false,
+    "title": "Finalización del Palacio de Comares",
+    "description": "Bajo el reinado de Yusuf I, se finaliza una de las partes más importantes de la Alhambra.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 6,
+    "year": 1492,
+    "isApproximate": false,
+    "title": "Toma de Granada",
+    "description": "Los Reyes Católicos, Isabel I y Fernando II, conquistan Granada, finalizando la Reconquista.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 7,
+    "year": 1499,
+    "isApproximate": false,
+    "title": "Rebelión del Albaicín",
+    "description": "Primera gran revuelta de los moriscos granadinos contra la pragmática de conversión forzosa.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 8,
+    "year": 1526,
+    "isApproximate": false,
+    "title": "Visita de Carlos I",
+    "description": "El emperador Carlos I y V de Alemania visita Granada y ordena la construcción de su palacio en la Alhambra.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 9,
+    "year": 1531,
+    "isApproximate": false,
+    "title": "Fundación de la Universidad de Granada",
+    "description": "Carlos I funda la Universidad de Granada mediante una bula del papa Clemente VII.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 10,
+    "year": 1883,
+    "isApproximate": false,
+    "title": "Terremoto de Arenas del Rey",
+    "description": "Un devastador terremoto afecta gravemente a la provincia de Granada, especialmente a la comarca de la Alhama.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 11,
+    "year": 1898,
+    "isApproximate": false,
+    "title": "Nacimiento de Federico García Lorca",
+    "description": "Nace en Fuente Vaqueros uno de los poetas y dramaturgos más importantes de la literatura española.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 12,
+    "year": 1922,
+    "isApproximate": false,
+    "title": "Concurso de Cante Jondo",
+    "description": "Lorca, Falla y otros intelectuales organizan este histórico concurso para preservar la pureza del flamenco.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 13,
+    "year": 1936,
+    "isApproximate": false,
+    "title": "Asesinato de García Lorca",
+    "description": "Al comienzo de la Guerra Civil Española, el poeta es asesinado en el camino de Víznar a Alfacar.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 14,
+    "year": 1984,
+    "isApproximate": false,
+    "title": "La Alhambra, Patrimonio de la Humanidad",
+    "description": "La UNESCO declara a la Alhambra y el Generalife como Patrimonio de la Humanidad.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 15,
+    "year": 1995,
+    "isApproximate": false,
+    "title": "Inauguración del Parque de las Ciencias",
+    "description": "Abre sus puertas el primer museo interactivo de ciencia de Andalucía.",
+    "image": "https://via.placeholder.com/200"
+  },
+  {
+    "id": 16,
+    "year": 2007,
+    "isApproximate": false,
+    "title": "Inauguración del Metro de Granada",
+    "description": "Se inaugura la primera línea del Metropolitano de Granada, conectando la ciudad con su área metropolitana.",
+    "image": "https://via.placeholder.com/200"
+  }
+]
