@@ -13,6 +13,9 @@ const timeline = document.getElementById('timeline');
 const finalScoreEl = document.getElementById('final-score');
 const correctAnswersEl = document.getElementById('correct-answers');
 const wrongAnswersEl = document.getElementById('wrong-answers');
+const resumeModal = document.getElementById('resume-modal');
+const resumeYesButton = document.getElementById('resume-yes-button');
+const resumeNoButton = document.getElementById('resume-no-button');
 
 const STORAGE_KEY = 'triviaGameState';
 
@@ -400,14 +403,24 @@ onDOMReady(() => {
     
     const savedStateJSON = localStorage.getItem(STORAGE_KEY);
     if (savedStateJSON) {
-      if (confirm("Hemos encontrado una partida a medias. ¿Deseas continuar?")) {
-        resumeGame(JSON.parse(savedStateJSON));
-      } else {
-        clearGameState();
-      }
+      showResumeGameModal(JSON.parse(savedStateJSON));
     }
     
     startButton.addEventListener('click', startGame);
     restartButton.addEventListener('click', startGame);
   });
 });
+
+function showResumeGameModal(savedState) {
+  resumeModal.classList.remove('hidden');
+
+  resumeYesButton.onclick = () => {
+    resumeGame(savedState);
+    resumeModal.classList.add('hidden');
+  };
+
+  resumeNoButton.onclick = () => {
+    clearGameState();
+    resumeModal.classList.add('hidden');
+  };
+}
