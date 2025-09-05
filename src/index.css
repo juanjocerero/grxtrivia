@@ -235,6 +235,10 @@ body {
 .streak-popup {
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: auto;
     
     max-width: 50%;
     padding: 0.5rem 1rem;
@@ -258,5 +262,9 @@ body {
     .card-content img {
         width: 4rem; /* 64px */
         height: 4rem; /* 64px */
+    }
+
+    .streak-popup {
+        max-width: 80%;
     }
 }
