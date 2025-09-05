@@ -18,6 +18,17 @@ export const createUIManager = () => {
         DOM.startScreen.classList.remove('hidden');
     });
 
+    DOM.timeline.addEventListener('click', (e) => {
+        const cardElement = e.target.closest('.card-in-timeline');
+        // Solo permitir expandir si el timeline está en modo denso
+        if (cardElement && DOM.timeline.classList.contains('very-dense-view')) {
+            const cardId = parseInt(cardElement.dataset.id, 10);
+            if (gameHandlers.onToggleCardExpansion) {
+                gameHandlers.onToggleCardExpansion(cardId);
+            }
+        }
+    });
+
     initSortable(gameHandlers);
   };
 

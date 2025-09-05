@@ -29,6 +29,7 @@
     "vite": "^7.1.4"
   },
   "dependencies": {
+    "canvas-confetti": "^1.9.3",
     "sortablejs": "^1.15.6"
   }
 }

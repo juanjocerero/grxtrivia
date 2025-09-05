@@ -40,7 +40,7 @@
     </div>
 
     <!-- Modal para resultados finales -->
-    <div id="results-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+    <div id="results-modal" class="hidden fixed inset-0 bg-opacity-75 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg shadow-xl p-6 max-w-lg mx-auto text-center relative">
             <button id="close-results-modal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
             <h2 class="text-2xl font-bold mb-4 text-gray-900">¡Se acabó!</h2>
@@ -68,7 +68,8 @@
                 <div>
                     <h2 class="text-sm sm:text-lg font-bold text-gray-900 whitespace-nowrap">Puntuación: <span id="score">0</span></h2>
                 </div>
-                <div>
+                <div class="flex items-center gap-4">
+                    <h2 id="streak-counter" class="hidden text-sm sm:text-lg font-bold text-amber-500 whitespace-nowrap"></h2>
                     <h2 class="text-sm sm:text-lg font-bold text-gray-900 whitespace-nowrap"><span class="hidden sm:inline">Acontecimiento </span><span id="card-counter">1/10</span></h2>
                 </div>
                 <div>

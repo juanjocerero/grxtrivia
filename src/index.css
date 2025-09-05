@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 32px;
     /* Padding vertical aumentado para mejorar el área de drop, especialmente arriba y abajo */
     padding: 4rem 0;
     -ms-overflow-style: none;  /* IE y Edge */
@@ -61,13 +61,13 @@ body {
 }
 
 .card-in-timeline::before {
-    height: 16px; /* Debe coincidir con el gap del timeline */
-    top: -16px;
+    height: 32px; /* Should match the padding-top */
+    top: 0; /* Position at the top of the padding */
 }
 
 .card-in-timeline::after {
-    height: 16px; /* Debe coincidir con el gap del timeline */
-    bottom: -16px;
+    height: 32px; /* Should match the padding-bottom */
+    bottom: 0; /* Position at the bottom of the padding */
 }
 
 /* Ocultar segmentos de línea en los extremos */
@@ -79,28 +79,40 @@ body {
 }
 
 /* --- Transitions for Density --- */
+.card-content {
+    transition: all 0.3s ease-in-out;
+}
+
 .card-content h3,
 .card-content p {
-    transition: font-size 0.3s ease-in-out;
+    transition: font-size 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .card-content img {
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 
 /* --- Reglas de Densidad --- */
 
-#timeline.dense-view .card-content h3 { font-size: 1rem; }
-#timeline.dense-view .card-content p { font-size: 0.75rem; }
-#timeline.dense-view .card-content img { 
-    width: 5rem; /* 80px */
-    height: 5rem; /* 80px */
+#timeline.very-dense-view .card:not(.is-being-placed) {
+    cursor: pointer;
 }
 
-#timeline.very-dense-view .card-content h3 { font-size: 0.875rem; }
-#timeline.very-dense-view .card-content p { display: none; }
-#timeline.very-dense-view .card-content img { display: none; }
+#timeline.very-dense-view .card:not(.is-being-placed) .card-content h3 { font-size: 0.875rem; }
+#timeline.very-dense-view .card:not(.is-being-placed) .card-content p { display: none; opacity: 0; }
+#timeline.very-dense-view .card:not(.is-being-placed) .card-content img { display: none; opacity: 0; }
+
+/* Anular el modo denso para las tarjetas expandidas */
+#timeline.very-dense-view .card.is-expanded .card-content h3 { font-size: 1.125rem; }
+#timeline.very-dense-view .card.is-expanded .card-content p {
+    display: block;
+    opacity: 1;
+}
+#timeline.very-dense-view .card.is-expanded .card-content img {
+    display: block;
+    opacity: 1;
+}
 
 
 /* --- Estilos Generales de Tarjetas --- */
@@ -110,6 +122,7 @@ body {
     left: 50%;
     top: 0;
     transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease-in-out;
 }
 
 .container-blur {
@@ -133,6 +146,14 @@ body {
 .anchor-card {
     box-shadow: 0 0 15px rgba(110, 160, 255, 0.4);
     border: 1px solid rgba(110, 160, 255, 0.5);
+}
+
+#timeline .anchor-card {
+    box-shadow: none;
+}
+
+.card {
+    transition: border-left-color 0.4s ease-in-out;
 }
 
 .card.correct {
@@ -164,4 +185,79 @@ body {
 /* --- Ocultar scrollbar --- */
 #timeline::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
+}
+
+/* --- Animaciones --- */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-entering {
+    animation: fade-in-up 0.4s ease-out;
+}
+
+@keyframes score-jump {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+.animate-jump {
+    animation: score-jump 0.3s ease-in-out;
+}
+
+@keyframes streak-flash {
+    0%, 100% { color: inherit; }
+    50% { color: #f59e0b; /* amber-500 */ }
+}
+
+.animate-flash {
+    animation: streak-flash 0.5s ease-in-out;
+}
+
+@keyframes fade-out-up {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.streak-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background-color: #f59e0b; /* amber-500 */
+    color: white;
+    font-weight: bold;
+    animation: fade-out-up 1.5s ease-out forwards;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* --- Estilos para Móviles --- */
+@media (max-width: 640px) {
+    .card-content h3 {
+        font-size: 1rem; /* Reducido de text-lg */
+    }
+    .card-content p {
+        font-size: 0.875rem; /* Reducido de text-sm */
+    }
+    .card-content img {
+        width: 4rem; /* 64px */
+        height: 4rem; /* 64px */
+    }
 }

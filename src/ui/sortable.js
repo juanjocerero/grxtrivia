@@ -12,6 +12,9 @@ const _handleCardDrop = (evt, gameHandlers) => {
         return;
     }
 
+    // Mark card as being placed to prevent it from collapsing
+    droppedCard.classList.add('is-being-placed');
+
     // Add blur effect to card content
     const cardContent = droppedCard.querySelector('.card-content');
     if (cardContent) {
@@ -42,6 +45,9 @@ const _handleCardDrop = (evt, gameHandlers) => {
         }
         overlay.remove();
 
+        // The card is now confirmed, remove the special class
+        droppedCard.classList.remove('is-being-placed');
+
         // Call the game logic handler
         gameHandlers.onConfirmPlacement(cardId, newIndex);
 
@@ -52,7 +58,6 @@ export const initSortable = (gameHandlers) => {
   sortableTimeline = new Sortable(DOM.timeline, {
     group: { name: 'timeline-game', pull: false, put: true },
     sort: true,
-    filter: '.correct, .incorrect, .anchor-card',
     animation: 150,
     ghostClass: 'card-ghost',
     onAdd: (evt) => _handleCardDrop(evt, gameHandlers)

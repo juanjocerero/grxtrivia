@@ -28,6 +28,7 @@ async function main() {
   const handlers = {
     onStartGame: () => game.startGame(),
     onConfirmPlacement: (cardId, index) => game.confirmPlacement(cardId, index),
+    onToggleCardExpansion: (cardId) => game.toggleCardExpansion(cardId),
   };
 
   ui.init(handlers);

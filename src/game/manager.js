@@ -43,7 +43,7 @@ export const createGameManager = (allEvents) => {
     const firstCardIndex = Math.floor(Math.random() * STATE.gameEvents.length);
     const firstCard = STATE.gameEvents.splice(firstCardIndex, 1)[0];
     
-    STATE.timelineEvents.push({ ...firstCard, isResolved: true, isCorrect: true, isAnchor: true });
+    STATE.timelineEvents.push({ ...firstCard, isResolved: true, isCorrect: true, isAnchor: true, isExpanded: false });
     STATE.nextCard = STATE.gameEvents[0];
     
     clearGameState();
@@ -73,7 +73,7 @@ export const createGameManager = (allEvents) => {
       STATE.wrongAnswers++;
     }
 
-    STATE.timelineEvents.push({ ...cardToPlace, isResolved: true, isCorrect });
+    STATE.timelineEvents.push({ ...cardToPlace, isResolved: true, isCorrect, isExpanded: false });
     
     const currentCardIndexInGame = STATE.gameEvents.findIndex(e => e.id === cardId);
 
@@ -87,6 +87,14 @@ export const createGameManager = (allEvents) => {
     }
     
     notify();
+  };
+
+  const toggleCardExpansion = (cardId) => {
+    const card = STATE.timelineEvents.find(e => e.id === cardId);
+    if (card) {
+        card.isExpanded = !card.isExpanded;
+        notify();
+    }
   };
 
   const saveGameState = () => {
@@ -106,9 +114,11 @@ export const createGameManager = (allEvents) => {
   };
 
   const resumeGame = (savedState) => {
+    const timelineEvents = savedState.timelineEvents.map(e => ({ ...e, isExpanded: e.isExpanded || false }));
+
     Object.assign(STATE, {
       gameEvents: savedState.gameEvents,
-      timelineEvents: savedState.timelineEvents,
+      timelineEvents: timelineEvents,
       score: savedState.score,
       correctAnswers: savedState.correctAnswers,
       wrongAnswers: savedState.wrongAnswers,
@@ -134,6 +144,7 @@ export const createGameManager = (allEvents) => {
     confirmPlacement,
     resumeGame,
     clearGameState,
+    toggleCardExpansion,
     set onStateChange(callback) {
       onStateChangeCallback = callback;
     },
