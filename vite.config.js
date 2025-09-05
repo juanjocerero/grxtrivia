@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/postcss';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
