@@ -60,7 +60,24 @@ export const initSortable = (gameHandlers) => {
     sort: true,
     animation: 150,
     ghostClass: 'card-ghost',
-    onAdd: (evt) => _handleCardDrop(evt, gameHandlers)
+    onAdd: (evt) => _handleCardDrop(evt, gameHandlers),
+    onEnd: (evt) => {
+        // Remove the clone if it exists
+        if (evt.clone && evt.clone.parentNode) {
+            evt.clone.parentNode.removeChild(evt.clone);
+        }
+
+        // Aggressive cleanup of Sortable.js temporary elements
+        const sortableClasses = ['sortable-ghost', 'sortable-chosen', 'sortable-drag', 'sortable-fallback'];
+        sortableClasses.forEach(className => {
+            const elements = document.querySelectorAll(`.${className}`);
+            elements.forEach(el => {
+                if (el.parentNode) {
+                    el.parentNode.removeChild(el);
+                }
+            });
+        });
+    }
   });
 
   sortableNextCard = new Sortable(DOM.nextCardContainer, {
