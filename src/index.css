@@ -60,10 +60,7 @@ body {
     z-index: 1;
 }
 
-.card-in-timeline::before {
-    height: 32px; /* Should match the padding-top */
-    top: -32px; /* Position in the gap above */
-}
+
 
 .card-in-timeline::after {
     height: 32px; /* Should match the padding-bottom */
@@ -71,9 +68,6 @@ body {
 }
 
 /* Ocultar segmentos de línea en los extremos */
-#timeline .card-in-timeline:first-child::before {
-    display: none;
-}
 #timeline .card-in-timeline:last-child::after {
     display: none;
 }
