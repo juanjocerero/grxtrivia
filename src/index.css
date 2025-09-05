@@ -57,17 +57,17 @@ body {
     transform: translateX(-50%);
     width: 4px;
     background-color: #cbd5e0; /* Tailwind gray-300 */
-    z-index: -1;
+    z-index: 1;
 }
 
 .card-in-timeline::before {
     height: 32px; /* Should match the padding-top */
-    top: 0; /* Position at the top of the padding */
+    top: -32px; /* Position in the gap above */
 }
 
 .card-in-timeline::after {
     height: 32px; /* Should match the padding-bottom */
-    bottom: 0; /* Position at the bottom of the padding */
+    bottom: -32px; /* Position in the gap below */
 }
 
 /* Ocultar segmentos de línea en los extremos */
@@ -123,6 +123,7 @@ body {
     top: 0;
     transform: translate(-50%, -50%);
     transition: background-color 0.3s ease-in-out;
+    z-index: 2;
 }
 
 .container-blur {
@@ -133,6 +134,20 @@ body {
 .card-ghost {
     opacity: 0.4;
     background: #4a5568;
+}
+
+.card-ghost::before,
+.card-ghost::after,
+.sortable-placeholder::before,
+.sortable-placeholder::after {
+    display: none;
+}
+
+.sortable-chosen::before,
+.sortable-chosen::after,
+.sortable-drag::before,
+.sortable-drag::after {
+    display: none;
 }
 
 .correct .year-badge {
