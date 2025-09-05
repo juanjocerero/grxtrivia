@@ -42,6 +42,9 @@ const _handleCardDrop = (evt, gameHandlers) => {
         }
         overlay.remove();
 
+        // Move card back visually, state update will re-render it
+        DOM.nextCardContainer.appendChild(droppedCard);
+
         // Call the game logic handler
         gameHandlers.onConfirmPlacement(cardId, newIndex);
 

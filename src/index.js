@@ -1,8 +1,13 @@
 import { createGameManager } from './game/manager.js';
 import { createUIManager } from './ui/uiManager.js';
 import { onDOMReady } from './utils/domReady.js';
+import { tailwindReady } from './utils/tailwindReady.js';
+import './index.css';
 
 async function main() {
+  await tailwindReady();
+  document.documentElement.classList.remove('tw-pending');
+
   let allEvents = [];
   try {
     const response = await fetch('events.json');
@@ -38,7 +43,7 @@ async function main() {
       () => game.resumeGame(savedState),
       () => {
         game.clearGameState();
-        window.location.reload(); // Recargar para un estado limpio y volver al inicio
+        game.startGame();
       }
     );
   }

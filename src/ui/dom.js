@@ -1,4 +1,5 @@
 export const DOM = {
+  mainContainer: document.getElementById('main-container'),
   startScreen: document.getElementById('start-screen'),
   gameScreen: document.getElementById('game-screen'),
   endScreen: document.getElementById('end-screen'),

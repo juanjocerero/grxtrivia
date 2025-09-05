@@ -1,3 +1,6 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss";
+
 body {
     touch-action: none;
 }
@@ -24,9 +27,22 @@ body {
 
 /* Estilo para la tarjeta que está en juego */
 #next-card-container .card {
-    box-shadow: 0 0 20px rgba(130, 180, 255, 0.6);
     border: 1px solid rgba(130, 180, 255, 0.7);
 }
+
+#next-card-container .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.5rem; /* Tailwind 'rounded-lg' */
+    box-shadow: 0 0 20px rgba(130, 180, 255, 0.6);
+    pointer-events: none;
+    z-index: 1;
+}
+
 
 /* Segmentos de línea para cada tarjeta en el timeline */
 .card-in-timeline {
@@ -92,6 +108,11 @@ body {
 
 
 /* --- Estilos Generales de Tarjetas --- */
+
+.container-blur {
+    filter: blur(4px);
+    transition: filter 0.2s ease-in-out;
+}
 
 .card-ghost {
     opacity: 0.4;

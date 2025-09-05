@@ -23,13 +23,16 @@ export const createUIManager = () => {
 
   const showResumeGameModal = (resumeFn, clearFn) => {
     DOM.resumeModal.classList.remove('hidden');
+    DOM.mainContainer.classList.add('container-blur');
     DOM.resumeYesButton.onclick = () => {
       resumeFn();
       DOM.resumeModal.classList.add('hidden');
+      DOM.mainContainer.classList.remove('container-blur');
     };
     DOM.resumeNoButton.onclick = () => {
       clearFn();
       DOM.resumeModal.classList.add('hidden');
+      DOM.mainContainer.classList.remove('container-blur');
     };
   };
 

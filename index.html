@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="tw-pending">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historia de Granada</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <style>html.tw-pending *{visibility:hidden}</style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-white text-gray-900 font-sans">
 
     <!-- Modal para reanudar partida -->
-    <div id="resume-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+    <div id="resume-modal" class="hidden fixed inset-0 bg-opacity-100 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm mx-auto text-center">
             <h2 class="text-xl font-bold mb-4 text-gray-900">Partida guardada</h2>
             <p class="mb-6 text-gray-700">Hemos encontrado una partida a medias. ¿Quieres continuarla?</p>
@@ -38,11 +37,11 @@
         </div>
     </div>
 
-    <main class="container mx-auto p-4 h-screen">
+    <main id="main-container" class="container mx-auto p-4 h-screen">
         <!-- Pantalla de Inicio -->
         <div id="start-screen" class="text-center flex flex-col items-center justify-center min-h-full">
-            <h1 class="text-4xl font-bold mb-4">¿Cuánto sabes sobre la historia de Granada?</h1>
-            <p class="mb-6">Ordena los eventos históricos en el orden cronológico correcto. ¡Arrastra y suelta las tarjetas para poner a prueba tu conocimiento!</p>
+            <h1 class="text-4xl font-bold mb-4 text-gray-900">¿Cuánto sabes sobre la historia de Granada?</h1>
+            <p class="mb-6 text-gray-700">Ordena los eventos históricos en el orden cronológico correcto. ¡Arrastra y suelta las tarjetas para poner a prueba tu conocimiento!</p>
             <button id="start-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Nueva partida
             </button>
@@ -50,7 +49,7 @@
 
         <!-- Pantalla de Juego (oculta por defecto) -->
         <div id="game-screen" class="hidden flex flex-col h-full">
-            <div class="fixed top-0 left-0 w-full p-4 bg-gray-100 z-10 flex justify-between items-center">
+            <div class="fixed top-0 left-0 w-full p-4 z-10 flex justify-between items-center">
                 <div>
                     <h2 class="text-xl font-bold text-gray-900">Puntuación: <span id="score">0</span></h2>
                 </div>
@@ -86,7 +85,6 @@
         
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <script type="module" src="/src/index.js"></script>
 </body>
 </html>
