@@ -1,0 +1,42 @@
+import { DOM } from './dom.js';
+import { render } from './renderer.js';
+import { initSortable, toggleSortable } from './sortable.js';
+
+export const createUIManager = () => {
+  let gameHandlers = {};
+
+  const init = (handlers) => {
+    gameHandlers = handlers;
+    DOM.startButton.addEventListener('click', () => gameHandlers.onStartGame());
+    DOM.restartButton.addEventListener('click', () => gameHandlers.onStartGame());
+    DOM.playAgainButton.addEventListener('click', () => {
+        DOM.resultsModal.classList.add('hidden');
+        gameHandlers.onStartGame();
+    });
+    DOM.closeResultsModalButton.addEventListener('click', () => {
+        DOM.resultsModal.classList.add('hidden');
+        DOM.startScreen.classList.remove('hidden');
+    });
+
+    initSortable(gameHandlers);
+  };
+
+  const showResumeGameModal = (resumeFn, clearFn) => {
+    DOM.resumeModal.classList.remove('hidden');
+    DOM.resumeYesButton.onclick = () => {
+      resumeFn();
+      DOM.resumeModal.classList.add('hidden');
+    };
+    DOM.resumeNoButton.onclick = () => {
+      clearFn();
+      DOM.resumeModal.classList.add('hidden');
+    };
+  };
+
+  const update = (state) => {
+    render(state);
+    toggleSortable(!state.isGameOver);
+  }
+
+  return { init, update, showResumeGameModal };
+};
