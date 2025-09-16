@@ -65,7 +65,7 @@ export const render = (state) => {
 
   if (state.gameEvents.length > 0) {
     const currentIndex = state.timelineEvents.length;
-    DOM.cardCounterEl.textContent = `${currentIndex}/${state.gameEvents.length + 1}`;
+    DOM.cardCounterEl.textContent = `${currentIndex}/${state.gameEvents.length}`;
   }
 
   if (previousState.streak !== state.streak) {
