@@ -10,26 +10,19 @@ import stylesUrl from './index.css?url';
   console.log('▶️ Trivia Game: Inicializando...');
 
   // 1️⃣ Helpers
-  async function loadAndInjectCss(url, referenceNode, id) {
-    // No inyectar si ya existe un nodo de estilos para este componente
+  function createAndInjectLink(url, referenceNode, id) {
     if (referenceNode.parentElement.querySelector(`#${id}`)) {
-      console.log(`🎨 CSS "${id}" ya inyectado.`);
+      console.log(`🎨 CSS Link "${id}" ya inyectado.`);
       return;
     }
-    console.log(`🎨 Cargando CSS desde ${url} para inyectar junto a`, referenceNode);
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`No se pudo cargar el CSS: ${response.statusText}`);
-      const cssText = await response.text();
-      const style = document.createElement('style');
-      style.id = id;
-      style.textContent = cssText;
-      // Inyectar el <style> como hermano, justo antes del contenedor del juego
-      referenceNode.parentElement.insertBefore(style, referenceNode);
-      console.log(`✅ CSS "${id}" inyectado correctamente como hermano del componente.`);
-    } catch (error) {
-      console.error(`❌ Fallo al inyectar CSS "${id}":`, error);
-    }
+    console.log(`🎨 Creando <link> para CSS en ${url} junto a`, referenceNode);
+    const link = document.createElement('link');
+    link.id = id;
+    link.rel = 'stylesheet';
+    link.href = url;
+    // Inyectar el <link> como hermano, justo antes del contenedor del juego
+    referenceNode.parentElement.insertBefore(link, referenceNode);
+    console.log(`✅ <link> CSS "${id}" inyectado correctamente.`);
   }
 
   function onDOMReady(fn) {
@@ -50,7 +43,7 @@ import stylesUrl from './index.css?url';
     const mainContainer = document.getElementById('main-container');
     if (mainContainer) {
       // `stylesUrl` es la URL correcta tanto en dev como en prod gracias a `?url`
-      await loadAndInjectCss(stylesUrl, mainContainer, 'trivia-main-styles');
+      createAndInjectLink(stylesUrl, mainContainer, 'trivia-main-styles');
     } else {
       console.error('❌ No se encontró #main-container para inyectar el CSS.');
     }
