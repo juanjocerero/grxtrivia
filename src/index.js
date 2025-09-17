@@ -10,25 +10,29 @@ import stylesUrl from './index.css?url';
   console.log('▶️ Trivia Game: Inicializando...');
 
   // 1️⃣ Helpers
-  function createAndInjectStyle(referenceNode, id) {
+  async function createAndInjectStyle(url, referenceNode, id) {
     if (referenceNode.parentElement.querySelector(`#${id}`)) {
-      console.log(`🎨 CSS <style> de prueba "${id}" ya inyectado.`);
+      console.log(`🎨 CSS <style> "${id}" ya inyectado.`);
       return;
     }
     try {
-      console.log(`🎨 Inyectando CSS de prueba (borde rojo)...`);
-      const cssText = '* { border: 5px solid red !important; }';
+      console.log(`🎨 Descargando CSS desde ${url} para inyectar como <style>...`);
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Error al descargar CSS: ${response.status} ${response.statusText}`);
+      }
+      const cssText = await response.text();
 
-      console.log(`🎨 Creando <style> para CSS de prueba junto a`, referenceNode);
+      console.log(`🎨 Creando <style> para CSS inyectado junto a`, referenceNode);
       const style = document.createElement('style');
       style.id = id;
       style.textContent = cssText;
 
       // Inyectar el <style> como hermano, justo antes del contenedor del juego
       referenceNode.parentElement.insertBefore(style, referenceNode);
-      console.log(`✅ <style> CSS de prueba "${id}" inyectado correctamente.`);
+      console.log(`✅ <style> CSS "${id}" inyectado correctamente.`);
     } catch (error) {
-      console.error(`❌ Error al inyectar el CSS de prueba como <style> tag:`, error);
+      console.error(`❌ Error al inyectar el CSS como <style> tag:`, error);
     }
   }
 
@@ -49,8 +53,8 @@ import stylesUrl from './index.css?url';
 
     const mainContainer = document.getElementById('main-container');
     if (mainContainer) {
-      // Inyectamos el CSS de prueba
-      createAndInjectStyle(mainContainer, 'trivia-main-styles');
+      // `stylesUrl` es la URL correcta tanto en dev como en prod gracias a `?url`
+      await createAndInjectStyle(stylesUrl, mainContainer, 'trivia-main-styles');
     } else {
       console.error('❌ No se encontró #main-container para inyectar el CSS.');
     }
