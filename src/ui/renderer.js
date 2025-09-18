@@ -7,7 +7,7 @@ const _renderCard = (event, isDraggable = false) => {
   const card = document.createElement('div');
   card.dataset.id = event.id;
   card.dataset.year = event.year;
-  card.className = 'card bg-white p-4 rounded-lg border border-gray-200 w-full max-w-lg mx-auto relative';
+  card.className = 'card bg-white p-4 rounded-lg border border-gray-200 w-full max-w-lg mx-auto relative select-none';
   if (isDraggable) card.classList.add('shadow-lg');
   
   if (isDraggable) card.classList.add('cursor-move');
