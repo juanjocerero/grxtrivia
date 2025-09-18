@@ -60,6 +60,8 @@ export const initSortable = (gameHandlers) => {
     sort: true,
     animation: 150,
     ghostClass: 'card-ghost',
+    delay: 150, // ms, time in milliseconds to define when the sorting should start
+    delayOnTouchOnly: true, // only delay if user is using touch
     onAdd: (evt) => _handleCardDrop(evt, gameHandlers),
     onEnd: (evt) => {
         // Remove the clone if it exists
@@ -83,7 +85,9 @@ export const initSortable = (gameHandlers) => {
   sortableNextCard = new Sortable(DOM.nextCardContainer, {
     group: { name: 'timeline-game', pull: true, put: false },
     animation: 150,
-    ghostClass: 'card-ghost'
+    ghostClass: 'card-ghost',
+    delay: 150, // ms, time in milliseconds to define when the sorting should start
+    delayOnTouchOnly: true // only delay if user is using touch
   });
 };
 

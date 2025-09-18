@@ -1,10 +1,6 @@
 @layer theme, base, components, utilities;
 @import "tailwindcss";
 
-body {
-    touch-action: none;
-}
-
 #timeline-wrapper {
     max-height: 100%;
 }
